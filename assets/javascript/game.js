@@ -1,19 +1,20 @@
 /*=========== Global Variables ======== */
 var goal = 0;
-var gem1 = 0;
-var gem2 = 0;
-var gem3 = 0;
-var gem4 = 0;
+var gem1 = [];
+var gem2 = [];
+var gem3 = [];
+var gem4 = [];
 var wins = 0;
 var losses = 0
 var score = 0;
+var losingScore = 0;
 
 /*=========== Start Game Function ======= */
 $( document ).ready(function(Startgame)
 {
     $("#wins").text("wins: " + wins);
     $("#losses").text("losses: " + losses);
-        goal = Math.floor(Math.random() * 19) + 101;
+        goal = Math.floor(Math.random() * 101) + 19;
         $("#goal").text(goal);
         console.log("your goal is: ", goal);
         
@@ -24,88 +25,106 @@ $( document ).ready(function(Startgame)
         console.log("gem1 number is: ", gem1);
         console.log("gem2 number is: ", gem2); 
         console.log("gem3 number is: ", gem3); 
-        console.log("gem4 number is: ", gem4);  
+        console.log("gem4 number is: ", gem4); 
         
  $('#gem1').on ('click', function()
 {
     score = score + gem1;
+    losingScore = score;
     $("#your_score").text(score);
     console.log("your score is: ", score); 
 
     if (score === goal)
     {
-    wins++;
+    wins = wins +  1;
+    $("#wins").text("wins: " + wins);
     alert("you win!");
+        reset();
     }
 
     else if (score > goal)
     {
-    losses++;
-    alert("you lose :(");
+        losses = losses + 1;
+        $("#losses").text("losses: " + losses);
+        alert("you lose");
+            reset();
     }
-
 });
 $('#gem2').on ('click', function()
 {
     score = score + gem2;
+    losingScore = score;
     $("#your_score").text(score);
-    console.log("your score is: ", score); 
+    console.log("your score is: ", score);
 
     if (score === goal)
     {
-    wins++;
+    wins = wins + 1;
+    $("#wins").text("wins: " + wins);
     alert("you win!");
+        reset();
     }
-
     else if (score > goal)
     {
-    losses++;
-    alert("you lose :(");
+        losses = losses + 1;
+        $("#losses").text("losses: " + losses);
+        alert("you lose");
+            reset();
     }
+
 });
 $('#gem3').on ('click', function()
 {
     score = score + gem3;
+    losingScore = score;
     $("#your_score").text(score);
     console.log("your score is: ", score);
     
     if (score === goal)
     {
-    wins++;
+    wins = wins + 1;
+    $("#wins").text("wins: " + wins);
     alert("you win!");
+        reset();
     }
-
     else if (score > goal)
     {
-    losses++;
-    alert("you lose :(");
+        losses = losses + 1;
+        $("#losses").text("losses: " + losses);
+        alert("you lose");
+            reset();
     }
+
 });
 $('#gem4').on ('click', function()
 {
     score = score + gem4;
+    losingScore = score;
     $("#your_score").text(score);
     console.log("your score is: ", score); 
 
     if (score === goal)
     {
-    wins++;
+    wins = wins + 1;
+    $("#wins").text("wins: " + wins);
     alert("you win!");
+        reset();
     }
-
-else if (score > goal)
+    else if (score > goal)
     {
-    losses++;
-    alert("you lose :(");
+        losses = losses + 1;
+        $("#losses").text("losses: " + losses);
+        alert("you lose");
+            reset();
     }
 });
-
 
 function reset()
 {
     score = 0;
+    $("#your_score").text(score);
     goal = Math.floor(Math.random() * 19) + 101;
-
+    $("#goal").text(goal);
     gem1 = Math.floor(Math.random() * 11) + 1;
     gem2 = Math.floor(Math.random() * 11) + 1;
     gem3 = Math.floor(Math.random() * 11) + 1;
