@@ -1,30 +1,75 @@
 /*=========== Global Variables ======== */
-var goalNum = [19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 28, 29, 30, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86];
-var goal = [];
-var gem1 = [];
-var gem2 = [];
-var gem3 = [];
-var gem4 = [];
+var goal = 0;
+var gem1 = 0;
+var gem2 = 0;
+var gem3 = 0;
+var gem4 = 0;
 var wins = 0;
 var losses = 0
 var score = 0;
 
 /*=========== Start Game Function ======= */
-$(document).ready(function(startgame)
+$( document ).ready(function(Startgame)
 {
     goal = 0;
-        $('#goal').text(goal);
+    wins = 0;
+    losses = 0;
+    score = 0;
+    $("#wins").text("wins: " + wins);
+    $("#losses").text("losses: " + losses);
+        goal = Math.floor(Math.random() * 19) + 101;
+        $("#goal").text(goal);
+        console.log("your goal is: ", goal);
+        
+        gem1 = Math.floor(Math.random() * 11) + 1;
+        gem2 = Math.floor(Math.random() * 11) + 1;
+        gem3 = Math.floor(Math.random() * 11) + 1;
+        gem4 = Math.floor(Math.random() * 11) + 1;
+        console.log("gem1 number is: ", gem1);
+        console.log("gem2 number is: ", gem2); 
+        console.log("gem3 number is: ", gem3); 
+        console.log("gem4 number is: ", gem4);  
+        
+ $('#gem1').on ('click', function()
+{
+    score = score + gem1;
+    $("#your_score").text(score);
+    console.log("your score is: ", score); 
+});
+$('#gem2').on ('click', function()
+{
+    score = score + gem2;
+    $("#your_score").text(score);
+    console.log("your score is: ", score); 
+});
+$('#gem3').on ('click', function()
+{
+    score = score + gem3;
+    $("#your_score").text(score);
+    console.log("your score is: ", score); 
+});
+$('#gem4').on ('click', function()
+{
+    score = score + gem4;
+    $("#your_score").text(score);
+    console.log("your score is: ", score); 
+});
 
-    gem1 = Math.floor(Math.random()*11+1)
-    gem2 = Math.floor(Math.random()*11+1)
-    gem3 = Math.floor(Math.random()*11+1)
-    gem4 = Math.floor(Math.random()*11+1)
+if (score === goal)
+{
+    wins++;
+    alert("you win!");
+}
 
-wins = 0;
-losses = 0;
-score = 0;
+else if (score > goal)
+{
+    losses++;
+    alert("you lose :(");
+}
 
 });
+
+
 
 /* ============================ Psudeo Code   
 
@@ -64,5 +109,5 @@ randomly generate [gemNum] into [gem1, gem2, gem3, gem4]
     - randomly generate number for gem2
     - randomly generate number for gem3
     - randomly generate number for gem4
-[score] = '0'
+[score] = '0' */
 
